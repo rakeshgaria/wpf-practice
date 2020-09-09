@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupingAndFiltering"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Grouping and Filtering"  Height="450" Width="800">
+    <Grid Name="LayoutGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Group By Product Line?" Margin="0,0,10,0"/>
+            <CheckBox Name="GroupCheckBox" Checked="GroupCheckBox_Checked" Unchecked="GroupCheckBox_Unchecked"/>
+            <TextBlock Text="Show Black Products Only?" Margin="10,0,10,0"/>
+            <CheckBox Name="FilterCheckBox" Checked="FilterCheckBox_Checked" Unchecked="FilterCheckBox_Unchecked"/>
+        </StackPanel>
+        <DataGrid Name="dg" Grid.Row="1" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="true">
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="5,5,5,5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Product Line Group '" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
+                                    <TextBlock Text="', Number of Products = " FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Path=ItemCount}" FontWeight="Bold"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Product Number" Binding="{Binding ProductNumber}"/>
+                <DataGridTextColumn Header="Product Line" Binding="{Binding ProductLine}"/>
+                <DataGridTextColumn Header="Color" Binding="{Binding Color}"/>
+                <DataGridTextColumn Header="Class" Binding="{Binding Class}"/>
+                <DataGridTextColumn Header="Style" Binding="{Binding Style}"/>
+                <DataGridTextColumn Header="Size" Binding="{Binding Size}"/>
+                <DataGridTextColumn Header="Size Unit" Binding="{Binding SizeUnitMeasureCode}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
