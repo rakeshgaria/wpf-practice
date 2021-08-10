@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace CSharpSamples
+namespace A001_MainVariations
 {
     // Using variations of the Main() method
     class Program
