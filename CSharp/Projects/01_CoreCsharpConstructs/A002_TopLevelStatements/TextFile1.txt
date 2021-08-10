@@ -1,0 +1,43 @@
+﻿Using Top-Level Statements (New 9.0)
+
+While it is true that prior to C# 9.0, all C# .NET Core applications must have a Main() 
+method, C# 9.0 introduces top-level statements, which eliminate the need for much of 
+the ceremony around the C# application’s entry point. Both the class (Program) and 
+Main() methods can be removed.
+
+There are some rules around using top-level statements:
+• Only one file in the application can use top-level statements.
+• When using top-level statements, the program cannot have a declared entry point. 
+  [You cannot have any Main() method declared in the project]
+• The top-level statements cannot be enclosed in a namespace.
+• Top-level statements still access a string array of args.
+• Top-level statements return an application code by using a return.
+• Functions that would have been declared in the Program class become local
+  functions for the top-level statements.
+• Additional types can be declared after all top-level statements. Any types 
+  declared before the end of the top-level statements will result in a compilation 
+  error.
+
+
+This feature simplifies what's needed to begin exploring new ideas. You can use top-level 
+statements for scripting scenarios, or to explore. Once you've got the basics working, you 
+can start refactoring the code and create methods, classes, or other assemblies for reusable 
+components you've built. Top-level statements do enable quick experimentation and beginner 
+tutorials. They also provide a smooth path from experimentation to full programs.
+
+Top-level statements are executed in the order they appear in the file. 
+Top-level statements can only be used in one source file in your application. 
+The compiler generates an error if you use them in more than one file.
+
+You don't declare an args variable. For the single source file that contains 
+your top-level statements, the compiler recognizes args to mean the command-line 
+arguments. The type of args is a string[], as in all C# programs.
+
+
+Adding the await keyword instructs the compiler to generate the program entry point
+as a method that has the async modifier, and returns a System.Threading.Tasks.Task.
+This program does not return a value, so the program entry point returns a Task. If
+your program returns an integer value, you would add a return statement to the end
+of your top-level statements. That return statement would specify the integer value
+to return. If your top-level statements include an await expression, the return type
+becomes System.Threading.Tasks.Task<TResult>.

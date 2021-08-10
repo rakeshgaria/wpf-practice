@@ -1,0 +1,9 @@
+﻿Specifying an Application Error Code
+
+By convention, returning the value 0 indicates the program has terminated successfully, while another value (such as -1)
+represents an error condition. Be aware that the value 0 is automatically returned, even if you construct a
+Main() method prototyped to return void.
+
+When using top-level statements (and therefore no Main() method), if the executing code returns an
+integer, that is the return code. If nothing is explicitly returned, it still returns 0, as with explicitly using a
+Main() method.
