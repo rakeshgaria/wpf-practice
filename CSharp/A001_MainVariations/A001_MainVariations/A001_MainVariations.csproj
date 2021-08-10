@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>CSharpSamples.Program</StartupObject>
+    <StartupObject>A001_MainVariations.Program</StartupObject>
     <RootNamespace>A001_MainVariations</RootNamespace>
   </PropertyGroup>
 
